@@ -17,11 +17,11 @@ public class RegistrationTests extends TestBase {
 
     @Test
     @Owner("Udilov_a_s")
-    @Feature("Test")
-    @Story("Test")
+    @Feature("Форма регистрации")
+    @Story("Проверка формы регистрации")
     @Severity(SeverityLevel.BLOCKER)
-    @Link(value = "Test", url = "Test")
-    @DisplayName("Test")
+    @Link(value = "demoqa", url = "https://demoqa.com/automation-practice-form")
+    @DisplayName("Заполнение всех полей формы")
     @Tags({
             @Tag("WEB"),
             @Tag("SMOKE"),
@@ -69,11 +69,11 @@ public class RegistrationTests extends TestBase {
 
     @Test
     @Owner("Udilov_a_s")
-    @Feature("Test")
-    @Story("Test")
+    @Feature("Форма регистрации")
+    @Story("Проверка формы регистрации")
     @Severity(SeverityLevel.BLOCKER)
-    @Link(value = "Test", url = "Test")
-    @DisplayName("Test")
+    @Link(value = "demoqa", url = "https://demoqa.com/automation-practice-form")
+    @DisplayName("Заполнение обязательных полей формы")
     @Tags({
             @Tag("WEB"),
             @Tag("SMOKE")
@@ -102,11 +102,11 @@ public class RegistrationTests extends TestBase {
 
     @Test
     @Owner("Udilov_a_s")
-    @Feature("Test")
-    @Story("Test")
+    @Feature("Форма регистрации")
+    @Story("Проверка формы регистрации")
     @Severity(SeverityLevel.MINOR)
-    @Link(value = "Test", url = "Test")
-    @DisplayName("Test")
+    @Link(value = "demoqa", url = "https://demoqa.com/automation-practice-form")
+    @DisplayName("Все поля формы не заполнены")
     @Tags({
             @Tag("WEB"),
             @Tag("NEGATIVE")
