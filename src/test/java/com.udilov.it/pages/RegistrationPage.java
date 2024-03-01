@@ -12,16 +12,6 @@ import static com.codeborne.selenide.Selenide.$;
 
 public class RegistrationPage {
 
-    public RegistrationPage openPage() {
-
-        open("/automation-practice-form");
-        $(".practice-form-wrapper").shouldHave(text("Student Registration Form"));
-        executeJavaScript("$('#fixedban').remove()");
-        executeJavaScript("$('footer').remove()");
-
-        return this;
-    }
-
     private final SelenideElement firstNameInput = $("#firstName"),
             lastNameInput = $("#lastName"),
             userEmailInput = $("#userEmail"),
@@ -35,10 +25,26 @@ public class RegistrationPage {
             stateInput = $("#state"),
             cityInput = $("#city"),
             submitButton = $("#submit"),
-            userForm = $("#userForm");
+            userForm = $("#userForm"),
+            bannerRoot = $(".fc-consent-root");
 
     CalendarComponent calendarComponent = new CalendarComponent();
     ModalWindowComponent modalWindowComponent = new ModalWindowComponent();
+
+    public RegistrationPage openPage() {
+
+        open("/automation-practice-form");
+        $(".practice-form-wrapper").shouldHave(text("Student Registration Form"));
+
+        if (bannerRoot.isDisplayed()) {
+            bannerRoot.$(byText("Consent")).click();
+        }
+
+        executeJavaScript("$('#fixedban').remove()");
+        executeJavaScript("$('footer').remove()");
+
+        return this;
+    }
 
     public void checkValidation() {
 
