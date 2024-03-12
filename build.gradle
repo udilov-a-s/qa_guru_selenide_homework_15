@@ -37,12 +37,14 @@ dependencies {
             'org.junit.jupiter:junit-jupiter:5.10.1',
             'com.codeborne:selenide:6.19.1',
             'io.qameta.allure:allure-selenide:2.19.0',
-            'com.github.javafaker:javafaker:1.0.2'
+            'com.github.javafaker:javafaker:1.0.2',
+            'org.aeonbits.owner:owner:1.0.12'
     )
 }
 
 tasks.withType(Test) {
     useJUnitPlatform()
+    systemProperties(System.getProperties())
 
     testLogging {
         lifecycle {

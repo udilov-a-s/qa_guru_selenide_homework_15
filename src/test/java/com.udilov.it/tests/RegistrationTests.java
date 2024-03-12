@@ -2,7 +2,9 @@ package com.udilov.it.tests;
 
 import com.udilov.it.data.TestDataForRegistrationTests;
 import com.udilov.it.pages.RegistrationPage;
+import config.ProjectConfig;
 import io.qameta.allure.*;
+import org.aeonbits.owner.ConfigFactory;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Tags;
@@ -11,6 +13,8 @@ import org.junit.jupiter.api.Test;
 import static io.qameta.allure.Allure.step;
 
 public class RegistrationTests extends TestBase {
+
+    ProjectConfig projectConfig = ConfigFactory.create(ProjectConfig.class);
 
     RegistrationPage registrationPage = new RegistrationPage();
     TestDataForRegistrationTests testDataForRegistrationTests = new TestDataForRegistrationTests();
@@ -33,8 +37,8 @@ public class RegistrationTests extends TestBase {
             registrationPage.openPage();
         });
         step("Full fill form", () -> {
-            registrationPage.setFirstName(testDataForRegistrationTests.firstName)
-                    .setLastName(testDataForRegistrationTests.lastName)
+            registrationPage.setFirstName(projectConfig.firstName())
+                    .setLastName(projectConfig.lastName())
                     .setEmail(testDataForRegistrationTests.email)
                     .setGender(testDataForRegistrationTests.gender)
                     .setUserNumber(testDataForRegistrationTests.mobileNumber)
@@ -51,8 +55,8 @@ public class RegistrationTests extends TestBase {
             registrationPage.submitForm();
         });
         step("Check result", () -> {
-            registrationPage.checkResult("Student Name", testDataForRegistrationTests.firstName + " "
-                    + testDataForRegistrationTests.lastName)
+            registrationPage.checkResult("Student Name", projectConfig.firstName() + " "
+                    + projectConfig.lastName())
                     .checkResult("Student Email", testDataForRegistrationTests.email)
                     .checkResult("Gender", testDataForRegistrationTests.gender)
                     .checkResult("Mobile", testDataForRegistrationTests.mobileNumber)
@@ -84,8 +88,8 @@ public class RegistrationTests extends TestBase {
             registrationPage.openPage();
         });
         step("Minimal fill form", () -> {
-            registrationPage.setFirstName(testDataForRegistrationTests.firstName)
-                    .setLastName(testDataForRegistrationTests.lastName)
+            registrationPage.setFirstName(projectConfig.firstName())
+                    .setLastName(projectConfig.lastName())
                     .setGender(testDataForRegistrationTests.gender)
                     .setUserNumber(testDataForRegistrationTests.mobileNumber);
         });
@@ -93,8 +97,8 @@ public class RegistrationTests extends TestBase {
             registrationPage.submitForm();
         });
         step("Check result", () -> {
-            registrationPage.checkResult("Student Name", testDataForRegistrationTests.firstName + " "
-                    + testDataForRegistrationTests.lastName)
+            registrationPage.checkResult("Student Name", projectConfig.firstName() + " "
+                    + projectConfig.lastName())
                     .checkResult("Gender", testDataForRegistrationTests.gender)
                     .checkResult("Mobile", testDataForRegistrationTests.mobileNumber);
         });

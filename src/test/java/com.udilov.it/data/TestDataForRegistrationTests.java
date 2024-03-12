@@ -6,7 +6,6 @@ public class TestDataForRegistrationTests {
 
     Faker faker = new Faker();
 
-    public String firstName = faker.name().firstName();
     public String lastName = faker.name().lastName();
     public String email = faker.internet().emailAddress(lastName.toLowerCase());
     public String gender = getGender();
