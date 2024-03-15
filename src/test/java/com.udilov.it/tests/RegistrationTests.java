@@ -2,7 +2,7 @@ package com.udilov.it.tests;
 
 import com.udilov.it.data.TestDataForRegistrationTests;
 import com.udilov.it.pages.RegistrationPage;
-import config.ProjectConfig;
+import com.udilov.it.config.ProjectConfig;
 import io.qameta.allure.*;
 import org.aeonbits.owner.ConfigFactory;
 import org.junit.jupiter.api.DisplayName;
