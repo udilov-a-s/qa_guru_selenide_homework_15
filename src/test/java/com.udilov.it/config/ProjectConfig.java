@@ -2,7 +2,8 @@ package com.udilov.it.config;
 
 import org.aeonbits.owner.Config;
 
-@Config.Sources("classpath:com.udilov.it.config/${environment}.properties")
+@Config.LoadPolicy(Config.LoadType.FIRST)
+@Config.Sources({"classpath:config/${environment}.properties", "classpath:config/prod.properties"})
 public interface ProjectConfig extends Config {
 
     @Key("first_name")

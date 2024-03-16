@@ -1,8 +1,8 @@
 package com.udilov.it.tests;
 
+import com.udilov.it.config.ProjectConfig;
 import com.udilov.it.data.TestDataForRegistrationTests;
 import com.udilov.it.pages.RegistrationPage;
-import com.udilov.it.config.ProjectConfig;
 import io.qameta.allure.*;
 import org.aeonbits.owner.ConfigFactory;
 import org.junit.jupiter.api.DisplayName;
@@ -14,10 +14,10 @@ import static io.qameta.allure.Allure.step;
 
 public class RegistrationTests extends TestBase {
 
-    ProjectConfig projectConfig = ConfigFactory.create(ProjectConfig.class);
-
     RegistrationPage registrationPage = new RegistrationPage();
     TestDataForRegistrationTests testDataForRegistrationTests = new TestDataForRegistrationTests();
+
+    ProjectConfig projectConfig = ConfigFactory.create(ProjectConfig.class);
 
     @Test
     @Owner("Udilov_a_s")

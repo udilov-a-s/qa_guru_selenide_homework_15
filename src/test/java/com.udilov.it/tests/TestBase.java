@@ -5,11 +5,14 @@ import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.logevents.SelenideLogger;
 import com.udilov.it.attachments.Attachments;
 import io.qameta.allure.selenide.AllureSelenide;
+import org.aeonbits.owner.ConfigFactory;
+import com.udilov.it.config.DriverConfig;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
 import java.util.Map;
+import java.util.Objects;
 
 
 public class TestBase {
@@ -17,12 +20,12 @@ public class TestBase {
     @BeforeAll
     static void beforeAll() {
 
-        System.setProperty("environment", System.getProperty("environment", "prod"));
+        DriverConfig driverConfig = ConfigFactory.create(DriverConfig.class);
 
         Configuration.baseUrl = "https://demoqa.com";
-        Configuration.browserSize = System.getProperty("browser_size", "1920x1080");
-        Configuration.browser = System.getProperty("browser", "chrome");
-        Configuration.browserVersion = System.getProperty("browser_version", "122.0");
+        Configuration.browserSize = System.getProperty("browser_size", driverConfig.browserSize());
+        Configuration.browser = System.getProperty("browser", driverConfig.browserName());
+        Configuration.browserVersion = System.getProperty("browser_version", driverConfig.browserVersion());
         Configuration.timeout = 6000;
         Configuration.remote = System.getProperty("browser_remote_url");
 
@@ -41,9 +44,11 @@ public class TestBase {
 
         Attachments.screenshotAs("Last screenshot");
         Attachments.pageSource();
-        Attachments.browserConsoleLogs();
-        Attachments.addVideo();
+        if (!Objects.equals(Configuration.browser, "firefox")) {
+            Attachments.browserConsoleLogs();
+        }
 
+        Attachments.addVideo();
         Selenide.closeWebDriver();
     }
 }
