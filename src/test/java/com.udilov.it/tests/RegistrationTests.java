@@ -29,7 +29,7 @@ public class RegistrationTests extends TestBase {
     @Tags({
             @Tag("WEB"),
             @Tag("SMOKE"),
-            @Tag("POSITIVE")
+            @Tag("POSITIVE"),
     })
     void fullRegistrationTest() {
 

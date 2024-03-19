@@ -57,6 +57,6 @@ tasks.withType(Test) {
 
 task registration_tests(type: Test) {
     useJUnitPlatform() {
-        includeTags("SMOKE")
+        excludeTags("POSITIVE")
     }
 }
